@@ -2,21 +2,103 @@
 <html>
 <head>
     <title>Resume Builder</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #resume {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
+
 <body>
+
+<div class="container">
 
     <h1>Resume Builder</h1>
 
-    <input type="text" placeholder="Your Name">
-    <br><br>
+    <input type="text" id="name" placeholder="Your Name">
 
-    <input type="email" placeholder="Your Email">
-    <br><br>
+    <input type="email" id="email" placeholder="Your Email">
 
-    <textarea placeholder="About You"></textarea>
-    <br><br>
+    <input type="text" id="phone" placeholder="Phone Number">
 
-    <button>Generate Resume</button>
+    <textarea id="education" placeholder="Education"></textarea>
+
+    <textarea id="skills" placeholder="Skills"></textarea>
+
+    <textarea id="about" placeholder="About You"></textarea>
+
+    <button onclick="generateResume()">Generate Resume</button>
+
+    <div id="resume"></div>
+
+</div>
+
+<script>
+function generateResume() {
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let education = document.getElementById("education").value;
+    let skills = document.getElementById("skills").value;
+    let about = document.getElementById("about").value;
+
+    document.getElementById("resume").innerHTML = `
+        <h2>${name}</h2>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Phone:</b> ${phone}</p>
+
+        <h3>About Me</h3>
+        <p>${about}</p>
+
+        <h3>Education</h3>
+        <p>${education}</p>
+
+        <h3>Skills</h3>
+        <p>${skills}</p>
+    `;
+}
+</script>
 
 </body>
 </html>
